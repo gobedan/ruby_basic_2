@@ -20,7 +20,6 @@ leap = false
 month = nil
 day = nil
 
-
 puts "Enter year ('yyyy'):"
 year = gets.chomp.to_i
 leap = ( year % 4 == 0)  && (( year % 100 != 0 ) || ( year % 400 == 0 ))
@@ -33,9 +32,6 @@ loop do
 end
 
 max_day = leap ? days_in_month_leap.to_a[month-1][1] : days_in_month.to_a[month-1][1]
-
-puts leap
-puts max_day 
 
 loop do 
   puts "Enter day: "
