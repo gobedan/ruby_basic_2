@@ -1,23 +1,21 @@
-days_in_month = { January: 31, 
-  February: 28, 
-  March: 31, 
-  April: 30, 
-  May: 31, 
-  June: 30, 
-  July: 31, 
-  August: 31, 
-  September: 30, 
-  October: 31, 
-  November: 30, 
-  December: 31 
+days_in_month = { january: 31, 
+  february: 28, 
+  march: 31, 
+  april: 30, 
+  may: 31, 
+  june: 30, 
+  july: 31, 
+  august: 31, 
+  september: 30, 
+  october: 31, 
+  november: 30, 
+  december: 31 
 }
 
 
-leap = false 
-
 puts "Enter year ('yyyy'):"
 year = gets.chomp.to_i
-leap = ( year % 4 == 0)  && (( year % 100 != 0 ) || ( year % 400 == 0 ))
+
 
 month = loop do
   puts "Enter month ('mm'):"
@@ -26,7 +24,8 @@ month = loop do
   puts "month must be in 1..12!"
 end
 
-days_in_month[:February] =  leap ? 29 : 28 
+days_in_month[:february] =  29  if ( year % 4 == 0) && (( year % 100 != 0 ) || ( year % 400 == 0 )) 
+
 max_day = days_in_month.to_a[month-1][1] 
 
 day = loop do 
@@ -36,4 +35,7 @@ day = loop do
   puts "No such day in this month!"
 end
 
-puts "#{day} of #{days_in_month.to_a[month-1][0]}, #{year}"
+
+puts "#{day} of #{days_in_month.keys[month-1]}, #{year}"
+
+puts "Day № #{days_in_month.values.take(month-1).sum(day)}"
